@@ -7,4 +7,4 @@ const mapState = ({ counter }) => ({ counter })
 
 const mapDispatch = dispatch => bindActionCreators(CounterActions, dispatch)
 
-export default connect(mapState, mapDispatch())(Counter)
+export default connect(mapState, mapDispatch)(Counter)
