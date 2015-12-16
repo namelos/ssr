@@ -54,9 +54,11 @@
   },
   "dependencies": {
     "lodash": "^3.10.1",
+    "qs": "^6.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.1",
-    "redux": "^3.0.5"
+    "redux": "^3.0.5",
+    "redux-thunk": "^1.0.2"
   }
 }
