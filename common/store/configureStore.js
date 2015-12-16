@@ -12,7 +12,7 @@ export const configureStore = initalState => {
 
   if (module.hot) {
     module.hot.accept('../modules', () => {
-      const nextRootReducer = require('../reducers')
+      const nextRootReducer = require('../modules')
       store.replaceReducer(nextRootReducer)
     })
   }
