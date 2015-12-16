@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
+import { RaisedButton } from 'material-ui'
+import CSSModules from 'react-css-modules'
+import styles from './Counter.css'
 
-const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, counter }) => <p>
+const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, counter }) => <div styleName='red'>
   Clicked: {counter} times
   {' '}
-  <button onClick={increment}>+</button>
+  <RaisedButton onClick={increment} label="+" />
   {' '}
-  <button onClick={decrement}>-</button>
+  <RaisedButton onClick={decrement} label="-" />
   {' '}
-  <button onClick={incrementIfOdd}>Increment if odd</button>
+  <RaisedButton onClick={incrementIfOdd} label="inc if odd" />
   {' '}
-  <button onClick={() => incrementAsync()}>Increment async</button>
-</p>
+  <RaisedButton onClick={() => incrementAsync()} label="async increment" />
+</div>
 
-export default Counter
+export default CSSModules(Counter, styles)

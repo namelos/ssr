@@ -14,13 +14,20 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('app.css', {
+      allChunks: true
+    })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: path.join(__dirname, 'node_modules')
-    }]
+    loaders: [
+      { test: /\.js$/, loaders: ['babel'], exclude: path.join(__dirname, 'node_modules') },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style',
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]'),
+        include: path.join(__dirname, '.')
+      }
+    ]
   }
 };
