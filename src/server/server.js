@@ -26,11 +26,24 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler))
 
-app.use(handleRender)
+const renderFullPage = (html, initialState) => `
+  <html>
+    <head>
+      <title>universal</title>
+    </head>
+    <body>
+      <div id="app">${html}</div>
+      <script>
+        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+      </script>
+      <script src="/static/bundle.js"></script>
+    </body>
+  </html>
+`
 
 const handleRender = (req, res) =>
   fetchCounter(apiResult => {
-    const param = qs.parse(req, query)
+    const params = qs.parse(req.query)
     const counter = parseInt(params.counter, 10) || apiResult || 0
 
     const initialState = { counter }
@@ -48,20 +61,7 @@ const handleRender = (req, res) =>
     res.send(renderFullPage(html, finalState))
   })
 
-const renderFullPage = (html, initialState) => `
-  <html>
-    <head>
-      <title>universal</title>
-    </head>
-    <body>
-      <div id="app">${html}</div>
-      <script>
-        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-      </script>
-      <script src="/static/bundle.js"></script>
-    </body>
-  </html>
-`
+app.use(handleRender)
 
 app.listen(3000, err =>
   err ?
