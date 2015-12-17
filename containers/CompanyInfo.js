@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { TextField } from 'material-ui'
+import { TextField, Toggle } from 'material-ui'
 import { Logo } from '../components/index'
 
 const CompanyInfo = ({}) => <div>
   <LeftPanel />
+  <RightPanel />
 </div>
 
 const LeftPanel = () => <div>
@@ -19,6 +20,22 @@ const LeftPanel = () => <div>
   <br />
   <TextField floatingLabelText="标签"
              hintText="3个标签" />
+</div>
+
+const RightPanel = () => <div>
+  <h3>右边</h3>
+  <br />
+  融资目标<TextField hintText="(数字)" />
+  <br />
+  出让股份<TextField hintText="(必填)" />%
+  您的项目估值 { 'xxx' } 万元
+  <br />
+  <Toggle name="exceed" label="是否超募" />
+  <br />
+  最高融资目标<TextField hintText="(数字)" />万元
+  最高出让股份<TextField hintText="(数字)" />万元
+  <br />
+  起投金额<TextField hintText="(数字)" />万元
 </div>
 
 export default CompanyInfo
