@@ -1,11 +1,12 @@
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Counter from '../components/Counter'
-import { increment, decrement, incrementIfOdd, incrementAsync } from '../modules/counter'
+import { TextField } from 'material-ui'
+import { Logo } from '../components/index'
+import { CompanyInfo } from './index'
 
-const mapState = ({ counter }) => ({ counter })
+const App = ({}) => <div>
+  <CompanyInfo />
+</div>
 
-const mapDispatch = dispatch => bindActionCreators(
-  { increment, decrement, incrementIfOdd, incrementAsync }, dispatch)
-
-export default connect(mapState, mapDispatch)(Counter)
+export default App
